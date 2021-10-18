@@ -8,15 +8,19 @@ public class ShipControl : MonoBehaviour
     public GameObject bulletPrefab;
     public float speed = 10f;
     public float xLimit = 7f;
+    public float yLimit = 7f;
     public float reloadTime = 0.5f;
     private float elapsedTime = 0f;
+    private int hearts = 2;
     void Update()
     {
         elapsedTime += Time.deltaTime;
         float xInput = Input.GetAxis("Horizontal");
-        transform.Translate(xInput * speed * Time.deltaTime, 0f, 0f);
+        float yInput = Input.GetAxis("Vertical");
+        transform.Translate(xInput * speed * Time.deltaTime, yInput * speed * Time.deltaTime, 0f);
         Vector3 position = transform.position;
         position.x = Mathf.Clamp(position.x, -xLimit, xLimit);
+        position.y = Mathf.Clamp(position.y, -yLimit, yLimit);
         transform.position = position;
         if (Input.GetButtonDown("Jump") && elapsedTime > reloadTime)
         {
@@ -28,6 +32,12 @@ public class ShipControl : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        gameManager.PlayerDied();
+        Destroy(other.gameObject);
+        hearts--;
+        gameManager.Hearts(hearts);
+        if (hearts == 0)
+        {
+            gameManager.PlayerDied();
+        }
     }
 }
