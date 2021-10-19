@@ -7,6 +7,7 @@
         <e p="Bullet" t="Include">
           <e p="Bullet.cs" t="Include" />
         </e>
+        <e p="DestroyOnEndGame.cs" t="Include" />
         <e p="Meteor" t="Include">
           <e p="MeteorMover.cs" t="Include" />
           <e p="MeteorSpawn.cs" t="Include" />
@@ -14,6 +15,7 @@
         <e p="Scripts" t="Include">
           <e p="DestroyOnTrigger.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
+          <e p="LevelManager.cs" t="Include" />
           <e p="ScrollBackground.cs" t="Include" />
         </e>
         <e p="SpaceShip" t="Include">

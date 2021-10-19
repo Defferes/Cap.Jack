@@ -5,8 +5,8 @@ using UnityEngine;
 public class MeteorSpawn : MonoBehaviour
 {
     public GameObject meteorPrefab;
-    public float minSpawnDelay = 1f;
-    public float maxSpawnDelay = 3f;
+    public float minSpawnDelay = 0.1f;
+    public float maxSpawnDelay = 0.3f;
     public float spawnXLimit = 6f;
     void Start()
     {

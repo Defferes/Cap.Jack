@@ -11,7 +11,7 @@ public class ShipControl : MonoBehaviour
     public float yLimit = 7f;
     public float reloadTime = 0.5f;
     private float elapsedTime = 0f;
-    private int hearts = 2;
+    public int hearts = 2;
     void Update()
     {
         elapsedTime += Time.deltaTime;
