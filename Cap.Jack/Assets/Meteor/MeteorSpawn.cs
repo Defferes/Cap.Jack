@@ -7,7 +7,7 @@ public class MeteorSpawn : MonoBehaviour
     public GameObject meteorPrefab;
     public float minSpawnDelay = 0.1f;
     public float maxSpawnDelay = 0.3f;
-    public float spawnXLimit = 6f;
+    public float spawnXLimit = 7f;
     void Start()
     {
         Spawn();

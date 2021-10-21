@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     }
     public void RespawnClick()
     {
+        Destroy(GameObject.Find("Meteor(Clone)"));
         destroyOnEndGame.isFlag = false;
         shipControl.transform.position = new Vector3(0f,-5f,0f);
         shipControl.hearts = 2;
