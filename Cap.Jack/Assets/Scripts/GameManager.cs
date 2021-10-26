@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text gameOverText;
     public Text heartsText;
+    public Text MenuText;
     public Text respawnText;
     public Button respawnButton;
+    public Button MenuButton;
     private int playerScore = 0;
     public void AddScore()
     {
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
         respawnButton.enabled = false;
         gameOverText.enabled = false;
         respawnButton.image.enabled = false;
+        MenuText.enabled = false;
+        MenuButton.enabled = false;
+        MenuButton.image.enabled = false;
         playerScore = 0;
         Time.timeScale = 1;
         Invoke("IsFlag", 0.1f);
@@ -46,6 +51,9 @@ public class GameManager : MonoBehaviour
         respawnText.enabled = true;
         respawnButton.enabled = true;
         gameOverText.enabled = true;
+        MenuText.enabled = true;
+        MenuButton.enabled = true;
+        MenuButton.image.enabled = true;
         Time.timeScale = 0;
     }
 
