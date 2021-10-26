@@ -1,30 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
     GameManager gameManager;
-    public bool IsTriple = false;
+    public float speed = 10f;
+    public float directionX = 0f;
+
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
-        if (!IsTriple)
-        {
-            rigidBody.velocity = new Vector2(0f, speed);
-        }
-        else
-        {
-            rigidBody.velocity = new Vector2(2f,speed);
-        }
-        
+        rigidBody.velocity = new Vector2(directionX, speed);
     }
+    
     void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(other.gameObject);
-        gameManager.AddScore();
-        Destroy(gameObject); 
+            Destroy(other.gameObject);
+            gameManager.AddScore();
+            Destroy(gameObject);
+
     }
 }

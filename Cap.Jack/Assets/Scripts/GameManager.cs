@@ -26,16 +26,16 @@ public class GameManager : MonoBehaviour
     }
     public void RespawnClick()
     {
-        Destroy(GameObject.Find("Meteor(Clone)"));
-        destroyOnEndGame.isFlag = false;
+        
         shipControl.transform.position = new Vector3(0f,-5f,0f);
-        shipControl.hearts = 2;
+        shipControl.countHearts = 2;
         respawnText.enabled = false;
         respawnButton.enabled = false;
         gameOverText.enabled = false;
         respawnButton.image.enabled = false;
         playerScore = 0;
         Time.timeScale = 1;
+        Invoke("IsFlag", 0.1f);
         Hearts(2);
         AddScore();
     }
@@ -47,5 +47,10 @@ public class GameManager : MonoBehaviour
         respawnButton.enabled = true;
         gameOverText.enabled = true;
         Time.timeScale = 0;
+    }
+
+    public void IsFlag()
+    {
+        destroyOnEndGame.isFlag = false;
     }
 }

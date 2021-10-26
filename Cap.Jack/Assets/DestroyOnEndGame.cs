@@ -7,9 +7,9 @@ public class DestroyOnEndGame : MonoBehaviour
 {
     public bool isFlag = false;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (isFlag)
+        if (isFlag == true && other.gameObject.name == "Meteor(Clone)")
         {
             Destroy(other.gameObject);
         }

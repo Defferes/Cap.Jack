@@ -541,7 +541,7 @@ MonoBehaviour:
     type: 3}
   minSpawnDelay: 0.1
   maxSpawnDelay: 0.3
-  spawnXLimit: 6
+  spawnXLimit: 7
 --- !u!4 &962897420
 Transform:
   m_ObjectHideFlags: 0
@@ -675,7 +675,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 3}
+  m_Size: {x: 16, y: 9}
   m_EdgeRadius: 0
 --- !u!1 &1438882312
 GameObject:
@@ -1158,11 +1158,13 @@ MonoBehaviour:
   gameManager: {fileID: 1154338941}
   bulletPrefab: {fileID: 3054038910360301137, guid: b3e161116c3bb450f8572fbe653edc19,
     type: 3}
+  bulletManger: {fileID: 251032221837398225, guid: b3e161116c3bb450f8572fbe653edc19,
+    type: 3}
   speed: 10
   xLimit: 7
   yLimit: 5.5
-  reloadTime: 0.2
-  hearts: 2
+  reloadTime: 0.5
+  countHearts: 2
 --- !u!1 &1901379976
 GameObject:
   m_ObjectHideFlags: 0
