@@ -44,21 +44,33 @@ public class ShipControl : MonoBehaviour
             spawnPos += new Vector3(0f, 1.2f, 0);
             if (_typeShooting == TypeShooting.single)
             {
-                bulletManger.directionX = 0f;
-                Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+                SingleShoot(spawnPos);
             }
             else if (_typeShooting == TypeShooting.triple)
             {
-                bulletManger.directionX = 0f;
-                Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
-                bulletManger.directionX = 2f;
-                Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
-                bulletManger.directionX = -2f;
-                Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
-                elapsedTime = 0f; 
+                TripleShoot(spawnPos);
             }
             
         }
+    }
+
+    void SingleShoot(Vector3 spawnPos)
+    {
+        bulletManger.directionX = 0f;
+        Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        elapsedTime = 0f; 
+    }
+
+    void TripleShoot(Vector3 spawnPos)
+    {
+        
+        bulletManger.directionX = 0f;
+        Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        bulletManger.directionX = 2f;
+        Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        bulletManger.directionX = -2f;
+        Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        elapsedTime = 0f; 
     }
     void OnTriggerEnter2D(Collider2D other)
     {

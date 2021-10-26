@@ -31,13 +31,7 @@ public class GameManager : MonoBehaviour
         
         shipControl.transform.position = new Vector3(0f,-5f,0f);
         shipControl.countHearts = 2;
-        respawnText.enabled = false;
-        respawnButton.enabled = false;
-        gameOverText.enabled = false;
-        respawnButton.image.enabled = false;
-        MenuText.enabled = false;
-        MenuButton.enabled = false;
-        MenuButton.image.enabled = false;
+        TextAndButtonEnabled(false);
         playerScore = 0;
         Time.timeScale = 1;
         Invoke("IsFlag", 0.1f);
@@ -47,18 +41,23 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         destroyOnEndGame.isFlag = true;
-        respawnButton.image.enabled = true;
-        respawnText.enabled = true;
-        respawnButton.enabled = true;
-        gameOverText.enabled = true;
-        MenuText.enabled = true;
-        MenuButton.enabled = true;
-        MenuButton.image.enabled = true;
+        TextAndButtonEnabled(true);
         Time.timeScale = 0;
     }
 
     public void IsFlag()
     {
         destroyOnEndGame.isFlag = false;
+    }
+
+    public void TextAndButtonEnabled(bool isFlag)
+    {
+        respawnButton.image.enabled = isFlag;
+        respawnText.enabled = isFlag;
+        respawnButton.enabled = isFlag;
+        gameOverText.enabled = isFlag;
+        MenuText.enabled = isFlag;
+        MenuButton.enabled = isFlag;
+        MenuButton.image.enabled = isFlag;
     }
 }
