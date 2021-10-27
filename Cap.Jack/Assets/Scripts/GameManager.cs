@@ -8,13 +8,8 @@ public class GameManager : MonoBehaviour
     
     public ShipControl shipControl;
     public DestroyOnEndGame destroyOnEndGame;
-    public Text scoreText;
-    public Text gameOverText;
-    public Text heartsText;
-    public Text MenuText;
-    public Text respawnText;
-    public Button respawnButton;
-    public Button MenuButton;
+    public Text scoreText, gameOverText, heartsText, MenuText, respawnText;
+    public Button respawnButton,MenuButton;
     private int playerScore = 0;
     public void AddScore()
     {
@@ -22,7 +17,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + playerScore.ToString();
     }
     
-    public void Hearts(int hearts)
+    public void WriteHearts(int hearts)
     {
         heartsText.text = "Hearts: " + hearts;
     }
@@ -31,12 +26,14 @@ public class GameManager : MonoBehaviour
         
         shipControl.transform.position = new Vector3(0f,-5f,0f);
         shipControl.countHearts = 2;
+        shipControl.SwapColor();
         TextAndButtonEnabled(false);
         playerScore = 0;
         Time.timeScale = 1;
         Invoke("IsFlag", 0.1f);
-        Hearts(2);
+        WriteHearts(2);
         AddScore();
+        
     }
     public void PlayerDied()
     {

@@ -4,11 +4,15 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Box" t="Include">
+          <e p="BoxMove.cs" t="Include" />
+          <e p="SpawnBox.cs" t="Include" />
+        </e>
         <e p="Bullet" t="Include">
           <e p="Bullet.cs" t="Include" />
         </e>
-        <e p="DestroyOnEndGame.cs" t="Include" />
         <e p="Meteor" t="Include">
+          <e p="DestroyOnEndGame.cs" t="Include" />
           <e p="MeteorMover.cs" t="Include" />
           <e p="MeteorSpawn.cs" t="Include" />
         </e>

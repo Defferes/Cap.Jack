@@ -14,6 +14,7 @@ public class ShipControl : MonoBehaviour
     public GameManager gameManager;
     public GameObject bulletPrefab;
     public Bullet bulletManger;
+    private SpriteRenderer _spriteRenderer;
     public float speed = 10f;
     public float xLimit = 7f;
     public float yLimit = 7f;
@@ -74,12 +75,48 @@ public class ShipControl : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
-        countHearts--;
-        gameManager.Hearts(countHearts);
-        if (countHearts == 0)
+        if (other.gameObject.name == "Meteor(Clone)")
         {
-            gameManager.PlayerDied();
+            SwapColor(Color.red);
+            Invoke("SwapColor",0.5f);
+            Destroy(other.gameObject);
+            countHearts--;
+            gameManager.WriteHearts(countHearts);
+            if (countHearts == 0)
+            {
+                gameManager.PlayerDied();
+            }
         }
+        if (other.gameObject.name == "Box(Clone)")
+        {
+            Destroy(other.gameObject);
+            if (Random.Range(0, 2) == 0)
+            {
+                _typeShooting = TypeShooting.triple;
+                Invoke("ReturnSingleShooting",5f);
+            }
+            else
+            {
+                countHearts++;
+                gameManager.WriteHearts(countHearts);
+            }
+        }
+    }
+
+     void SwapColor(Color clr)
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = clr;
+    }
+
+    public void SwapColor()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.color = Color.white;
+    }
+
+    void ReturnSingleShooting()
+    {
+        _typeShooting = TypeShooting.single;
     }
 }
