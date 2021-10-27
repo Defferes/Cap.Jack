@@ -14,4 +14,9 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
         Time.timeScale = 1;
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
