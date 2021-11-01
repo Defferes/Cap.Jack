@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 enum TypeShooting
@@ -23,9 +24,18 @@ public class ShipControl : MonoBehaviour
     public int countHearts = 2;
     void FixedUpdate()
     {
+        float xInput, yInput;
         elapsedTime += Time.deltaTime;
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
+        if (gameManager.IsBoos)
+        {
+            yInput = Input.GetAxis("Horizontal");
+            xInput = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            xInput = Input.GetAxis("Horizontal");
+            yInput = Input.GetAxis("Vertical");
+        }
         transform.Translate(xInput * speed * Time.deltaTime, yInput * speed * Time.deltaTime, 0f);
         Vector3 position = transform.position;
         position.x = Mathf.Clamp(position.x, -xLimit, xLimit);
@@ -42,7 +52,10 @@ public class ShipControl : MonoBehaviour
         if (Input.GetButtonDown("Jump") && elapsedTime > reloadTime)
         {
             Vector3 spawnPos = transform.position;
-            spawnPos += new Vector3(0f, 1.2f, 0);
+            if(gameManager.IsBoos)
+            {
+                spawnPos += new Vector3(1.2f, 0f, 0);
+            }
             if (_typeShooting == TypeShooting.single)
             {
                 SingleShoot(spawnPos);

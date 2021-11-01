@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI; 
 
 public class GameManager : MonoBehaviour
@@ -11,6 +13,16 @@ public class GameManager : MonoBehaviour
     public Text scoreText, gameOverText, heartsText, MenuText, respawnText;
     public Button respawnButton,MenuButton;
     private int playerScore = 0;
+    public bool IsBoos = false;
+
+    private void Update()
+    {
+        if (playerScore == 20)
+        {
+            SceneManager.LoadScene("BossMother");
+        }
+    }
+
     public void AddScore()
     {
         playerScore++;
@@ -37,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerDied()
     {
-        destroyOnEndGame.isFlag = true;
+        //destroyOnEndGame.isFlag = true;
         TextAndButtonEnabled(true);
         Time.timeScale = 0;
     }

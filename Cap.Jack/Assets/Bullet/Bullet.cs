@@ -13,7 +13,15 @@ public class Bullet : MonoBehaviour
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
         Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
-        rigidBody.velocity = new Vector2(directionX, speed);
+        if (!gameManager.IsBoos)
+        {
+            rigidBody.velocity = new Vector2(directionX, speed );
+        }
+        else
+        {
+            rigidBody.velocity = new Vector2(speed, directionX);
+        }
+        
     }
     
     void OnCollisionEnter2D(Collision2D other)
